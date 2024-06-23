@@ -2,6 +2,26 @@
 
 ## Main
 
+## [0.13.0](https://github.com/loteks/temple/compare/v0.12.1...v0.13.0) (2024-06-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* configure runtime attributes function ([#202](https://github.com/loteks/temple/issues/202))
+
+### Features
+
+* configure runtime attributes function ([#202](https://github.com/loteks/temple/issues/202)) ([dc57221](https://github.com/loteks/temple/commit/dc57221bc99e165530134559097b27b1dfe95dbe))
+* Mix task to convert HTML into Temple ([#180](https://github.com/loteks/temple/issues/180)) ([2f04250](https://github.com/loteks/temple/commit/2f042506b68552e18e5c0125cf8ddd9ba7274738))
+* New Component API ([ced2f6a](https://github.com/loteks/temple/commit/ced2f6ab662a0875c2d53df890badac0384d863d))
+
+
+### Bug Fixes
+
+* **docs:** typos ([7a50587](https://github.com/loteks/temple/commit/7a505875af6a1cee1536e516528f5be914df1f3f))
+* relax constraint on phoenix_html ([f28468e](https://github.com/loteks/temple/commit/f28468e7f877a39759696333c4135fb1aa877d11))
+* runtime boolean attributes ([#188](https://github.com/loteks/temple/issues/188)) ([f4ce790](https://github.com/loteks/temple/commit/f4ce790411f04aa25fefcc3a9c2cef5d8db4f308)), closes [#187](https://github.com/loteks/temple/issues/187)
+
 ## [0.12.1](https://github.com/mhanberg/temple/compare/v0.12.0...v0.12.1) (2024-06-20)
 
 
