@@ -67,6 +67,26 @@ defmodule Temple.RendererTest do
       assert_html expected, result
     end
 
+    test "foreign void elements get self closing tags" do
+      result =
+        Renderer.compile do
+          input type: "text"
+          mprescripts foo: "bar"
+          rect width: "256"
+          circle cx: "128"
+        end
+
+      # html
+      expected = """
+      <input type="text">
+      <mprescripts foo="bar"/>
+      <rect width="256"/>
+      <circle cx="128"/>
+      """
+
+      assert_html expected, result
+    end
+
     test "a match does not emit" do
       result =
         Renderer.compile do
@@ -388,6 +408,38 @@ defmodule Temple.RendererTest do
       assert_html expected, result
     end
 
+    test "component with a default slot let! parameter" do
+      assigns = %{label: "i'm a slot attribute"}
+
+      result =
+        Renderer.compile do
+          div do
+            c &default_slot_with_parameter/1, let!: %{name: name} do
+              p do
+                "#{name} comes from the component"
+              end
+            end
+          end
+        end
+
+      # heex
+      expected = """
+      <div>
+      <div>
+        <p>
+          jimbo comes from the component
+        </p>
+
+      </div>
+
+
+      </div>
+
+      """
+
+      assert_html expected, result
+    end
+
     test "component with a named slot" do
       assigns = %{label: "i'm a slot attribute"}
 
@@ -433,18 +485,26 @@ defmodule Temple.RendererTest do
   end
 
   describe "special attribute stuff" do
-    test "class object syntax" do
+    test "class list " do
       result =
         Renderer.compile do
-          div class: ["hello world": false, "text-red": true] do
+          div class: ["foo bar", "hello world": false, "text-red": true] do
             "hello world"
+          end
+
+          div class: ["foo", nil, "bar"] do
+            "hi"
           end
         end
 
       # html
       expected = """
-      <div class="text-red">
+      <div class="foo bar text-red">
         hello world
+      </div>
+
+      <div class="foo bar">
+        hi
       </div>
 
       """
